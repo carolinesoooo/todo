@@ -58,7 +58,6 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
-        settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
 
         webView.setWebViewClient(new WebViewClient() {
