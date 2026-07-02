@@ -21,14 +21,16 @@ jobs:
       - name: 安装 Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: 安装 Gradle
-        uses: gradle/actions/setup-gradle@v5
-        with:
-          gradle-version: '8.5'
+      - name: 接受 Android SDK 许可
+        run: yes | sdkmanager --licenses 2>/dev/null || true
+
+      - name: 生成 Gradle Wrapper
+        working-directory: android-app
+        run: gradle wrapper --gradle-version 8.5
 
       - name: 编译 APK
         working-directory: android-app
-        run: gradle assembleDebug
+        run: ./gradlew assembleDebug
 
       - name: 上传 APK
         uses: actions/upload-artifact@v7
