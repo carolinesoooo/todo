@@ -1,0 +1,33 @@
+# Android
+*.apk
+*.aab
+*.dex
+*.class
+bin/
+gen/
+out/
+.gradle/
+local.properties
+*.iml
+.idea/
+*.log
+*.tmp
+
+# Build outputs
+build/
+app/build/
+*/build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
+
+# Netlify
+.netlify/
+
+# Surge
+.surgeignore
