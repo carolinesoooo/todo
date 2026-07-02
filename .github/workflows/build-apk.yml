@@ -21,12 +21,19 @@ jobs:
       - name: 安装 Android SDK
         uses: android-actions/setup-android@v4
 
+      - name: 安装 SDK 组件
+        run: |
+          yes | sdkmanager --licenses 2>/dev/null || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
       - name: 安装 Gradle
         uses: gradle/actions/setup-gradle@v5
 
       - name: 编译 APK
         working-directory: android-app
-        run: gradle assembleDebug
+        run: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          gradle assembleDebug
 
       - name: 上传 APK
         uses: actions/upload-artifact@v7
