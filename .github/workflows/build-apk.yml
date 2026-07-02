@@ -21,15 +21,8 @@ jobs:
       - name: 安装 Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: 接受 Android SDK 许可
-        run: yes | sdkmanager --licenses 2>/dev/null || true
-
       - name: 安装 Gradle
         uses: gradle/actions/setup-gradle@v5
-
-      - name: 创建 local.properties
-        working-directory: android-app
-        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
       - name: 编译 APK
         working-directory: android-app
